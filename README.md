@@ -23,7 +23,7 @@ The Go binary is also available from the [https://k8scenario.github.io](https://
 ## Downloading k8scenario
 
 <details><summary>show</summary>
-<p>
+<!-- <p> -->
 
 The tool can be downloaded from:
 
@@ -32,15 +32,14 @@ The tool can be downloaded from:
 **Note**: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - or at least it shouldn't !
 
 **Note**: A more complete version exists at [https://mjbright.github.io/static/bin/k8scenario](https://mjbright.github.io/static/bin/k8scenario), but it is not open source as it is used for paid Kubernetes trainings
-</p>
+<!-- </p> -->
 </details>
 
 
 ## Debugging resources
 
 <details><summary>show</summary>
-<p>
-
+<!-- <p> -->
 
 The tool can be downloaded from:
 An excellent resource to introduce you to the process of debugging applications running on Kubernetes is the "Visual guide on troubleshooting Kubernetes deployments" available on the *@learnk8s* blog at https://learnk8s.io/troubleshooting-deployments.
@@ -49,7 +48,7 @@ An excellent resource to introduce you to the process of debugging applications 
 
 Follow *@learnk8s* on twitter at https://twitter.com/learnk8s for some excellent Kubernetes resources.
 
-</p>
+<!-- </p> -->
 </details>
 
 ## Using k8scenario
@@ -128,9 +127,7 @@ kubectl -n k8scenario create deploy basictest --image=mjbright/ckad-demo:1
 ### Change context/namespace
 
 <details><summary>show</summary>
-<p>
-TODO ...
-
+<!-- <p> -->
 
 The tool can be downloaded from:
 **Note**: **WARNING** - the below assumes you are on a *vanilla* cluster, not a *production* cluster !
@@ -154,7 +151,7 @@ After use you should reset using
 ```bash
 kubectl config set-context $(kubectl config current-context) --namespace ""
 ```
-</p>
+<!-- </p> -->
 </details>
 
 
@@ -186,7 +183,7 @@ select scenario>>>
 # Instructions for creating scenarii for the k8scenario tool
 
 <details><summary>show</summary>
-<p>
+<!-- <p> -->
 
 A scenario is a zip file, to be downloaded by the k8scenario tool.
 
@@ -212,7 +209,8 @@ The above folder is comprised of several files:
 - EXCLUDE_SOLUTION.txt
 - check.sh
 - INSTRUCTIONS.txt
-</p>
+<!-- </p> -->
+
 </details>
 
 
@@ -220,15 +218,15 @@ The above folder is comprised of several files:
 # Instructions for testing new scenarii for the k8scenario tool
 
 <details><summary>show</summary>
-<p>
+<!-- <p> -->
 TODO ...
-</p>
+<!-- </p> -->
 </details>
 
 
 ## TODO:
 <details><summary>show</summary>
-<p>
+<!-- <p> -->
 
 - Create scenario YAML manifests (and optionally bash scripts) to
   - Check cluster functionality - OK with regards scenario
@@ -236,8 +234,10 @@ TODO ...
   - Check cluster functionality - broken
   - Uninstall scenario
   - Check cluster functionality - OK with regards scenario
-</p>
+<!-- </p> -->
 </details>
 
 
+<!-- <p> -->
+<!-- </p> -->
 
