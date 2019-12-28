@@ -1,6 +1,6 @@
 # k8scenario.github.io
 
-<!-- TEMPORARILY DISABLING IMAGE for lower bandwidth reloads!
+<!-- TODO: TEMPORARILY DISABLING IMAGE for lower bandwidth reloads!
 ![](images/kube-fixit.PNG)
 -->
 
@@ -51,7 +51,9 @@ The tool can be downloaded from:
 An excellent resource to introduce you to the process of debugging applications running on Kubernetes is the "Visual guide on troubleshooting Kubernetes deployments" available on the <i>@learnk8s</i> blog at
 <a href="https://learnk8s.io/troubleshooting-deployments"> https://learnk8s.io/troubleshooting-deployments </a>.
 
+<!-- TODO: TEMPORARILY DISABLING IMAGE for lower bandwidth reloads!
 <img src="https://learnk8s.io/a/36ab1a196436668c7dcc3aff1cb20821.svg" />
+-->
 
 Follow <i>@learnk8s</i> on twitter at <a href="https://twitter.com/learnk8s"> https://twitter.com/learnk8s </a> for some excellent Kubernetes resources.
 
@@ -136,16 +138,22 @@ kubectl -n k8scenario create deploy basictest --image=mjbright/ckad-demo:1
 <details><summary>show</summary>
 <!-- <p> -->
 
-<b>Note</b>: <b>WARNING</b> - the below assumes you are on a <i>vanilla</i> cluster, not a <i>production<i/> cluster !
+<b>Note</b>: <b>WARNING</b> - the below assumes you are on a <i>vanilla</i> cluster, not a <i>production</i> cluster !
 
 <br/>
-<b>Note</b> that to eliminate the need to set the namespace on each command, it is possible to modify the namespace of the current context
+<br/>
+<br/>
+Note that to eliminate the need to set the namespace on each command, it is possible to modify the namespace of the current context
 
+<br/>
+<br/>
 <br/>
 <pre>
 kubectl config set-context $(kubectl config current-context) --namespace k8scenario
 </pre>
 
+<br/>
+<br/>
 <br/>
 You can check the result as:
 <pre>
@@ -154,14 +162,15 @@ CURRENT   NAME          CLUSTER       AUTHINFO      NAMESPACE
 *         kind-kind_2   kind-kind_2   kind-kind_2
 </pre>
 
-
 <br/>
 After use you should reset using
 
 <pre>
 kubectl config set-context $(kubectl config current-context) --namespace ""
 </pre>
+
 <!-- </p> -->
+
 </details>
 
 
@@ -176,11 +185,6 @@ When it detects completion it will report the fact and drop back to the selectio
 [scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
 [scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
 [scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
-[scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
-[scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
-[scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
-[scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
-[scenario0] - cluster broken - Sleeping <10> secs ... - exit status: 1
 [scenario0] - cluster broken - Sleeping <10> secs ...
 
 ---- [scenario0] WELL DONE !!!! - The scenario appears to be fixed !!!!
@@ -189,65 +193,8 @@ Available scenarii: 0  1  2  20  21  3  40
 select scenario>>>
 ```
 
-
 # Instructions for creating scenarii for the k8scenario tool
 
-<details><summary>show</summary>
-<!-- <p> -->
+Refer to [Creating Scenarii] to learn how to create and test your own scenarii.
 
-A scenario is a zip file, to be downloaded by the k8scenario tool.
-
-The source for scenarii is in the https://github.com/k8scenario/k8scenario directory, under the SCENARII folder.
-
-An example is "scenario0" which is a basic "hello world" type of scenario which is typically demonstrated to participants at the beginning of the workshop.
-
-These are the *source* files for scenario0, as you might expect *EXCLUDE_SOLUTION.txt* is excluded from the scenario zip.  This file is a description of the scenario solution.
-
-```bash
-> ls -altr SCENARII/scenario0/
-total 4
--rw-rw-rw- 1 mjb mjb    0 Sep 17 11:18 9.empty.txt
--rw-rw-rw- 1 mjb mjb  545 Sep 19 16:30 functions.rc
--rw-rw-rw- 1 mjb mjb  172 Sep 19 16:48 EXCLUDE_SOLUTION.txt
--rwxr-xr-x 1 mjb mjb   51 Oct 30 09:15 check.sh
--rwxr-xr-x 1 mjb mjb  204 Oct 30 09:41 INSTRUCTIONS.txt
-```
-
-The above folder is comprised of several files:
-- 9.empty.txt
-- functions.rc
-- EXCLUDE_SOLUTION.txt
-- check.sh
-- INSTRUCTIONS.txt
-<!-- </p> -->
-
-</details>
-
-
-
-# Instructions for testing new scenarii for the k8scenario tool
-
-<details><summary>show</summary>
-<!-- <p> -->
-TODO ...
-<!-- </p> -->
-</details>
-
-
-## TODO:
-<details><summary>show</summary>
-<!-- <p> -->
-
-- Create scenario YAML manifests (and optionally bash scripts) to
-  - Check cluster functionality - OK with regards scenario
-  - Install scenario
-  - Check cluster functionality - broken
-  - Uninstall scenario
-  - Check cluster functionality - OK with regards scenario
-<!-- </p> -->
-</details>
-
-
-<!-- <p> -->
-<!-- </p> -->
 
