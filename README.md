@@ -32,7 +32,7 @@ The tool can be downloaded from:
 
 <br/>
 <p>
-<b>Note</b>: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - and it shouldn't !
+<b>Note</b>: The tool operates on the <i>k8scenario</i> namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - and it shouldn't !
 </p>
 
 <br/>
@@ -48,12 +48,12 @@ The tool can be downloaded from:
 <details><summary>show</summary>
 <!-- <p> -->
 
-An excellent resource to introduce you to the process of debugging applications running on Kubernetes is the "Visual guide on troubleshooting Kubernetes deployments" available on the *@learnk8s* blog at
+An excellent resource to introduce you to the process of debugging applications running on Kubernetes is the "Visual guide on troubleshooting Kubernetes deployments" available on the <i>@learnk8s</i> blog at
 <a href="https://learnk8s.io/troubleshooting-deployments"> https://learnk8s.io/troubleshooting-deployments </a>.
 
 <img src="https://learnk8s.io/a/36ab1a196436668c7dcc3aff1cb20821.svg" />
 
-Follow *@learnk8s* on twitter at <a href="https://twitter.com/learnk8s"> https://twitter.com/learnk8s </a> for some excellent Kubernetes resources.
+Follow <i>@learnk8s</i> on twitter at <a href="https://twitter.com/learnk8s"> https://twitter.com/learnk8s </a> for some excellent Kubernetes resources.
 
 <!-- </p> -->
 </details>
@@ -136,35 +136,40 @@ kubectl -n k8scenario create deploy basictest --image=mjbright/ckad-demo:1
 <details><summary>show</summary>
 <!-- <p> -->
 
-The tool can be downloaded from:
-**Note**: **WARNING** - the below assumes you are on a *vanilla* cluster, not a *production* cluster !
+<b>Note</b>: <b>WARNING</b> - the below assumes you are on a <i>vanilla</i> cluster, not a <i>production<i/> cluster !
 
-Note that to eliminate the need to set the namespace on each command, it is possible to modify the namespace of the current context
+<br/>
+<b>Note</b> that to eliminate the need to set the namespace on each command, it is possible to modify the namespace of the current context
 
-```bash
+<br/>
+<pre>
 kubectl config set-context $(kubectl config current-context) --namespace k8scenario
-```
+</pre>
 
+<br/>
 You can check the result as:
-```bash
+<pre>
 kubectl config get-contexts
 CURRENT   NAME          CLUSTER       AUTHINFO      NAMESPACE
 *         kind-kind_2   kind-kind_2   kind-kind_2
-```
+</pre>
 
 
+<br/>
 After use you should reset using
 
-```bash
+<pre>
 kubectl config set-context $(kubectl config current-context) --namespace ""
-```
+</pre>
 <!-- </p> -->
 </details>
 
 
 ### Wait for the tool to detect that the problem is fixed
 
-The tool
+The tool loops, checking periodically to see if the task is complete/problem is fixed.
+
+When it detects completion it will report the fact and drop back to the selection menu as show below:
 
 ```
  - exit status: 1
@@ -183,8 +188,6 @@ The tool
 Available scenarii: 0  1  2  20  21  3  40
 select scenario>>>
 ```
-
-
 
 
 # Instructions for creating scenarii for the k8scenario tool
