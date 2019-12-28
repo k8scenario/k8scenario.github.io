@@ -18,24 +18,25 @@ The k8scenario/k8scenario tool is a command-line application
 - provides some minimal hint of the task to perform/problem to fix
 - loops until the "problem" is fixed
 
-The k8scenario/k8scenario tool downloads available scenarii as zip files from the [https://k8scenario.github.io](https://k8scenario.github.io) site.
+The k8scenario/k8scenario tool automatically downloads available scenarii as zip files from the [https://k8scenario.github.io](https://k8scenario.github.io) site.
 
 The Go binary is also available from the [https://k8scenario.github.io](https://k8scenario.github.io) site.
 
 ## Downloading k8scenario
 
 <details><summary>show</summary>
-<!-- <p> -->
 
 The tool can be downloaded from:
 
-<a href="https://k8scenario.github.io/static/bin/k8scenario"> https://k8scenario.github.io/static/bin/k8scenario) </a>
+<a href="https://k8scenario.github.io/static/bin/k8scenario"> https://k8scenario.github.io/static/bin/k8scenario </a>
 
-[https://k8scenario.github.io/static/bin/k8scenario](https://k8scenario.github.io/static/bin/k8scenario)
+<p>
+<b>Note</b>: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - or at least it shouldn't !
+</p>
 
-**Note**: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - or at least it shouldn't !
-
-**Note**: A more complete version exists at [https://mjbright.github.io/static/bin/k8scenario](https://mjbright.github.io/static/bin/k8scenario), but it is not open source as it is used for paid Kubernetes trainings
+<p>
+<b>Note</b>: A more complete version exists at <a href="https://mjbright.github.io/static/bin/k8scenario"> https://mjbright.github.io/static/bin/k8scenario </a>, but it is not open source as it is used for paid Kubernetes trainings
+</p>
 <!-- </p> -->
 </details>
 
