@@ -24,10 +24,6 @@ The Go binary is also available from the [https://k8scenario.github.io](https://
 
 <details><summary>show</summary>
 <p>
-TODO ...
-</p>
-</details>
-
 
 The tool can be downloaded from:
 
@@ -36,14 +32,14 @@ The tool can be downloaded from:
 **Note**: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - or at least it shouldn't !
 
 **Note**: A more complete version exists at [https://mjbright.github.io/static/bin/k8scenario](https://mjbright.github.io/static/bin/k8scenario), but it is not open source as it is used for paid Kubernetes trainings
+</p>
+</details>
+
 
 ## Debugging resources
 
 <details><summary>show</summary>
 <p>
-TODO ...
-</p>
-</details>
 
 
 The tool can be downloaded from:
@@ -52,6 +48,9 @@ An excellent resource to introduce you to the process of debugging applications 
 ![](https://learnk8s.io/a/36ab1a196436668c7dcc3aff1cb20821.svg)
 
 Follow *@learnk8s* on twitter at https://twitter.com/learnk8s for some excellent Kubernetes resources.
+
+</p>
+</details>
 
 ## Using k8scenario
 
