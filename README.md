@@ -27,6 +27,8 @@ The Go binary is also available from the [https://k8scenario.github.io](https://
 
 The tool can be downloaded from:
 
+<a href="https://k8scenario.github.io/static/bin/k8scenario"> https://k8scenario.github.io/static/bin/k8scenario) </a>
+
 [https://k8scenario.github.io/static/bin/k8scenario](https://k8scenario.github.io/static/bin/k8scenario)
 
 **Note**: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - or at least it shouldn't !
@@ -122,7 +124,7 @@ kubectl -n k8scenario create deploy basictest --image=mjbright/ckad-demo:1
 
 **Note:**
 - It is necessary to specify the namespace with the '*-n*' option, see **change context/namespace** below for an alternative
-- It is 
+- For this particular task, there is no constraint on the image, so you can choose any available/accessible image
 
 ### Change context/namespace
 
