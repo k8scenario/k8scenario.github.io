@@ -195,6 +195,6 @@ select scenario>>>
 
 # Instructions for creating scenarii for the k8scenario tool
 
-Refer to [Creating Scenarii] to learn how to create and test your own scenarii.
+Refer to [Creating Scenarii](CREATING_SCENARII) to learn how to create and test your own scenarii.
 
 
