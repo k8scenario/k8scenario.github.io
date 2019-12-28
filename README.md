@@ -30,10 +30,12 @@ The tool can be downloaded from:
 
 <a href="https://k8scenario.github.io/static/bin/k8scenario"> https://k8scenario.github.io/static/bin/k8scenario </a>
 
+<br/>
 <p>
-<b>Note</b>: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - or at least it shouldn't !
+<b>Note</b>: The tool operates on the *k8scenario* namespace which it creates/deletes for each scenario.  The tool - as written - requires full cluster permissions, so will likely not run on your production cluster - and it shouldn't !
 </p>
 
+<br/>
 <p>
 <b>Note</b>: A more complete version exists at <a href="https://mjbright.github.io/static/bin/k8scenario"> https://mjbright.github.io/static/bin/k8scenario </a>, but it is not open source as it is used for paid Kubernetes trainings
 </p>
@@ -46,12 +48,12 @@ The tool can be downloaded from:
 <details><summary>show</summary>
 <!-- <p> -->
 
-The tool can be downloaded from:
-An excellent resource to introduce you to the process of debugging applications running on Kubernetes is the "Visual guide on troubleshooting Kubernetes deployments" available on the *@learnk8s* blog at https://learnk8s.io/troubleshooting-deployments.
+An excellent resource to introduce you to the process of debugging applications running on Kubernetes is the "Visual guide on troubleshooting Kubernetes deployments" available on the *@learnk8s* blog at
+<a href="https://learnk8s.io/troubleshooting-deployments"> https://learnk8s.io/troubleshooting-deployments </a>.
 
-![](https://learnk8s.io/a/36ab1a196436668c7dcc3aff1cb20821.svg)
+<img src="https://learnk8s.io/a/36ab1a196436668c7dcc3aff1cb20821.svg" />
 
-Follow *@learnk8s* on twitter at https://twitter.com/learnk8s for some excellent Kubernetes resources.
+Follow *@learnk8s* on twitter at <a href="https://twitter.com/learnk8s"> https://twitter.com/learnk8s </a> for some excellent Kubernetes resources.
 
 <!-- </p> -->
 </details>
