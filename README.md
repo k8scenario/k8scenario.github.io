@@ -1,6 +1,8 @@
 # k8scenario.github.io
 
+<!-- TEMPORARILY DISABLING IMAGE for lower bandwidth reloads!
 ![](images/kube-fixit.PNG)
+-->
 
 k8scenario/k8scenario is an open source tool for running Kubernetes Application Troubleshooting Workshops.
 
