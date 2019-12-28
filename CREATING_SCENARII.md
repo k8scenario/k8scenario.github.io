@@ -1,7 +1,5 @@
 
-<!-- TODO: TEMPORARILY DISABLING IMAGE for lower bandwidth reloads!
 ![](images/kube-fixit.PNG)
--->
 
 # Instructions for building the k8scenario tool
 

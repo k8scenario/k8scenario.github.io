@@ -1,8 +1,6 @@
 # k8scenario.github.io
 
-<!-- TODO: TEMPORARILY DISABLING IMAGE for lower bandwidth reloads!
 ![](images/kube-fixit.PNG)
--->
 
 k8scenario/k8scenario is an open source tool for running Kubernetes Application Troubleshooting Workshops.
 
@@ -51,9 +49,7 @@ The tool can be downloaded from:
 An excellent resource to introduce you to the process of debugging applications running on Kubernetes is the "Visual guide on troubleshooting Kubernetes deployments" available on the <i>@learnk8s</i> blog at
 <a href="https://learnk8s.io/troubleshooting-deployments"> https://learnk8s.io/troubleshooting-deployments </a>.
 
-<!-- TODO: TEMPORARILY DISABLING IMAGE for lower bandwidth reloads!
 <img src="https://learnk8s.io/a/36ab1a196436668c7dcc3aff1cb20821.svg" />
--->
 
 Follow <i>@learnk8s</i> on twitter at <a href="https://twitter.com/learnk8s"> https://twitter.com/learnk8s </a> for some excellent Kubernetes resources.
 
