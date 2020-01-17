@@ -59,7 +59,8 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$RELEASE/bin/
 ```
 
 Reference: https://kubernetes.io/docs/tasks/tools/install-kubectl/
-</detail>
+
+</details>
 
 ## 1.2 Downloading KIND
 
@@ -75,7 +76,8 @@ wget -O ~/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/v0.
 chmod +x ~/bin/kind
 kind version
 ```
-</detail>
+
+</details>
    
 ## 1.3 Downloading k8scenario
 
