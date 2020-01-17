@@ -20,13 +20,72 @@ The k8scenario/k8scenario tool automatically downloads available scenarii as zip
 
 The Go binary is also available from the [https://k8scenario.github.io](https://k8scenario.github.io) site.
 
-## Downloading k8scenario
+# 1. Taking part in a Troubleshooting Lab
+
+To run the lab you will be provided with a Virtual Machine in the Cloud.
+
+Your instructor will have provided login credentials.
+
+**Note**: **AFTER THE WORKSHOP** you are free to run this workshop on your own laptop with a Kubernetes cluster installed - please don't do this during the workshop as the download of images will kill the conference WiFi ... **for everyone!!**
+
+Once logged in to your VM you will need to
+- Create a ~/bin directory and place it in your PATH
+- Download some tools (kubectl, kind, k8scenario) to ~/bin
+- Launch k8scenario
+
+Create a local directory ~/bin and place it in your PATH as follows:
+
+```bash
+mkdir ~/bin
+echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
+. ~/.bashrc
+```
+
+## 1.1 Downloading kubectl
+
+<details><summary>Install kubectl</summary>
+
+The tool can be downloaded using the command:
+
+```bash
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+```
+
+**NOTE**: or in case of copy/paste problems do this as 2 separate commands:
+```bash
+RELEASE=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$RELEASE/bin/linux/amd64/kubectl
+```
+
+Reference: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+</detail>
+
+## 1.2 Downloading KIND
+
+<details><summary>Install KIND</summary>
+
+The tool can be downloaded from:
+https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64
+
+Download the kind executable an place it in your ~/bin directory
+
+```bash
+wget -O ~/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64
+chmod +x ~/bin/kind
+kind version
+```
+</detail>
+   
+## 1.3 Downloading k8scenario
 
 <details><summary>show</summary>
 
-The tool can be downloaded from:
+The tool can be downloaded from: 
+<a href="https://mjbright.github.io/static/bin/k8scenario"> https://mjbright.github.io/static/bin/k8scenario </a>
 
-<a href="https://k8scenario.github.io/static/bin/k8scenario"> https://k8scenario.github.io/static/bin/k8scenario </a>
+<b>Note</b>: The open source version of this repository is available at the URL below but has less scenarii available:
+https://k8scenario.github.io/static/bin/k8scenario
 
 <br/>
 <p>
@@ -34,14 +93,15 @@ The tool can be downloaded from:
 </p>
 
 <br/>
-<p>
-<b>Note</b>: A more complete version exists at <a href="https://mjbright.github.io/static/bin/k8scenario"> https://mjbright.github.io/static/bin/k8scenario </a>, but it is not open source as it is used for paid Kubernetes trainings
-</p>
-<!-- </p> -->
 </details>
 
+```bash
+wget -O bin/k8scenario https://mjbright.github.io/static/bin/k8scenario
+```
 
-## Debugging resources
+You may now move on to section 3 to start the tool
+
+# 2. Debugging resources
 
 <details><summary>show</summary>
 <!-- <p> -->
@@ -56,7 +116,7 @@ Follow <i>@learnk8s</i> on twitter at <a href="https://twitter.com/learnk8s"> ht
 <!-- </p> -->
 </details>
 
-## Using k8scenario
+# 3. Using k8scenario
 
 k8scenario is a command line tool.
 
