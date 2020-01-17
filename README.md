@@ -212,6 +212,18 @@ kubectl cluster-info --context kind-kind
 Have a nice day! 👋
 ```
 
+Verify that you can access the cluster
+```bash
+ kubectl get nodes
+```
+
+You should see output similar to:
+```
+NAME                 STATUS   ROLES    AGE     VERSION
+kind-control-plane   Ready    master   3m18s   v1.17.0
+kind-worker          Ready    <none>   2m41s   v1.17.0
+```
+
 You may now move on to section 3 to start the tool
 
 
