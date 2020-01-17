@@ -27,20 +27,96 @@ export DEFAULT_PUBDIR="$HOME//z/TOOLS/k8scenario.github.io"
 export K8SCENARIO_BINARY=k8scenario
 ```
 
-If you only need to build you local copy, you can keep these default values.
+If you only need to build your local copy, you can keep these default values.
 
 # Instructions for creating new scenarii for the k8scenario tool
+
+## TEMPLATE files
+
+Some examples files are provided under SCENARII/TEMPLATE.
+
+These files can be used as the basis for new scenarii.
+
+## 1.create_deploy.yaml
+
+An example yaml file for creating a deployment
+
+## functions.rc
+
+Contains bash utility functions to be used in SETUP_SCENARIO.sh, CHECK_SCENARIO.sh, EXCLUDE_FIX_SCENARIO.sh scripts
+
+## SETUP_SCENARIO.sh
+
+An example SETUP script
+
+## CHECK_SCENARIO.sh
+
+An example CHECK script to verify when a task/fix is completed
+
+## EXCLUDE_SOLUTION.txt
+
+For documentation only - not included in zip files
+
+## HINTS.txt
+Not used: could be the basis of extra hints - make notes here
+
+## INSTRUCTIONS.txt
+Instructions to be shown at start of scenario, and periodically
+
+## TAGS.txt
+
+Not currently used: Indicate subject/resources involved in this scenario
+
+## QUIZ.txt
+
+Not currently used: will be basis of quiz questions
+
+## QUESTION.txt
+
+TO be done
+
+
+## Scenario zip files
 
 A scenario is a zip file, to be downloaded by the k8scenario tool.
 
 The source for scenarii are kept in the https://github.com/k8scenario/k8scenario repo, under the SCENARII folder.
 
-An example is "scenario0" which is a basic "hello world" type of scenario which is typically demonstrated to participants at the beginning of the workshop.
+Scenarii are each of one of the following types:
+- tasks: You are told "*what to do*" and the tool detects when you have succeeded
+- fix: You are told about an application problem and the tool detects when you have successfully fixed the problem
+- [**not implemented**] question: you to recuperate some value from the platform/app, and will detect if you reply correctly or not
+- [**not implemented**] quiz:
 
-Note that the tool looks for check.sh, INSTRUCTIONS.txt and any *yaml* files (file names ending in .yaml or .yml - case insensitive)
+An example is "scenario0" which is a basic "hello world" 'task' scenario which is typically demonstrated to participants at the beginning of the workshop.
 
+Scenario are stored in the repo under SCENARII, e.g. under SCENARII/scenario0.
+
+The script *update_scenarii.sh* is used to create zip files and upload them to the github repository.
+
+Note:
+- The zip files include the files in the scenario directory, except for files whose names begin with '*EXCLUDE_*'
+
+
+The tool will download the zip for the selected scenario and interpret the files there:
+- To setup the scenario
+  - It will "*kubectl apply*" any yaml files (.yml/.yaml)
+  - If present, the tool will execute file "*SETUP_SCENARIO.sh*" before (with option --pre-yaml) and after (--post-yaml) applying the yaml files
+
+- When running the scenario
+  - Periodically show the contents of *INSTRUCTIONS.txt* to describe the task/fix
+  - The tool will execute file "*CHECK_SCENARIO.sh*" to check the scenario
+  - If this returns exit code 0 the scenario is deemed to be fixed
+
+- Some other files exist in the zip which are not currently used:
+  - CHALLENGE_TYPE.txt: specifies if a *task*, *fix* (LATER: *quiz*, *question*)
+  - TAGS.txt: specifies tags applied to scenarii such as *Pods*, *Deployments* etc ...
+
+Files which are present in the scenarii but excluded from the zip are
+- EXCLUDE_SOLUTION.txt:    A ("*secret*") description of the scenario
+- EXCLUDE_FIX_SCENARIO.sh  A script to fix the scenario (for *regression testing*, and for reference)
+  
 These are the *source* files for scenario0.
-
 ```bash
 > ls -altr SCENARII/scenario0/
 total 4
@@ -69,7 +145,7 @@ kubectl apply -n k8scenario -f <yaml-file>
 ```
 Thus any yaml files you provide will be used to create the conditions for a scenario, typically some bad application configuration which is to be fixed.
 
-### check.sh
+### CHECK_SCENARIO.sh
 
 This script is used to detect if the assigned task/problem has been solved.
 
@@ -114,14 +190,36 @@ Running this script without arguments will generate the scenario zip files.
 Running with the '*-u*' argument will also upload them to 
 https://k8scenario.github.io/static/k8scenarii
 
-# Instructions for testing new scenarii for the k8scenario tool
+# Instructions for testing new scenarii - using *setup_check_fix_scenario.sh*
 
-You can run a local web server ...
+From the repo directory you can run a scenario using the *setup_check_fix_scenario.sh* script:
+e.g.
+    ```setup_check_fix_scenario.sh 1```
 
-## TO BE DONE
+###  test_scenario_local.sh
 
-Describe k8scenario arguments for a local server
+Then run the script
+    ```test_scenario_local.sh -a```
 
+You should see indications of pass/fail
 
+# switch_context.sh
+
+Tool for switching between your current kubeconfig context and k8scenario context (with namespace '*k8scenario*')
+
+# Update/upload zip files - update_scenarii.sh
+
+# setup_check_fix_scenario.sh
+
+#### You can run a local web server ...
+
+TODO: Describe k8scenario arguments for a local server
+
+Not needed can run directly from filesystem:
+e.g.
+
+```bash
+k8scenario --zip SCENARIO/scenario0.zip
+```
 
 
