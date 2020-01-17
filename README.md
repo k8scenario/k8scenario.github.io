@@ -41,7 +41,51 @@ echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
 . ~/.bashrc
 ```
 
-## 1.1 Downloading kubectl
+## 1.1 Verifying Docker
+
+<details><summary>Verify Docker</summary>
+Verify that Docker runs correctly on your system:
+
+```bash
+docker version
+```
+
+should show output similar to:
+```
+Client: Docker Engine - Community
+ Version:           19.03.5
+ API version:       1.40
+ Go version:        go1.12.12
+ Git commit:        633a0ea838
+ Built:             Wed Nov 13 07:29:52 2019
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.5
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.12.12
+  Git commit:       633a0ea838
+  Built:            Wed Nov 13 07:28:22 2019
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.2.10
+  GitCommit:        b34a5c8af56e510852c35414db4c1f4fa6172339
+ runc:
+  Version:          1.0.0-rc8+dev
+  GitCommit:        3e425f80a8c931f88e6d94a8c831b9d5aa481657
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+```
+
+Reference: https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+</details>
+
+## 1.2 Downloading kubectl
 
 <details><summary>Install kubectl</summary>
 
@@ -49,9 +93,6 @@ The tool can be downloaded using the command:
 
 ```bash
 wget -O ~/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-
-chmod +x ~/bin/kubectl
-kubectl version
 ```
 
 **NOTE**: or in case of copy/paste problems do this as 2 separate commands:
@@ -59,7 +100,10 @@ kubectl version
 RELEASE=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 
 wget -O ~/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$RELEASE/bin/linux/amd64/kubectl
+```
 
+Then check that kubectl is available:
+```bash
 chmod +x ~/bin/kubectl
 kubectl version
 ```
@@ -68,14 +112,14 @@ Reference: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 </details>
 
-## 1.2 Downloading KIND
+## 1.3 Downloading KIND
 
 <details><summary>Install KIND</summary>
 
 The tool can be downloaded from:
 https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64
 
-Download the kind executable an place it in your ~/bin directory
+Download the kind executable and place it in your ~/bin directory
 
 ```bash
 wget -O ~/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-linux-amd64
@@ -85,7 +129,7 @@ kind version
 
 </details>
    
-## 1.3 Downloading k8scenario
+## 1.4 Downloading k8scenario
 
 <details><summary>show</summary>
 
@@ -110,8 +154,6 @@ k8scenario --version
 ```
 </details>
 
-You may now move on to section 3 to start the tool
-
 # 2. Creating a KIND Kubernetes cluster
 
 Create a file called '*kind_2.yaml*' with the following content:
@@ -124,9 +166,14 @@ nodes:
         - role: worker
 ```
 
-## 2.1 Deleting an existing cluster:
+## 2.1 Deleting any existing cluster:
 
 If you already have a cluster which you wish to replace, first delete that cluster.
+
+You can list current clusters with the
+```bash
+kind get clusters
+``` command.
 
 Supposing that the cluster is named '*kind*', delete it as follows:
 ```bash
@@ -149,7 +196,23 @@ kubectl get nodes
 
 You should see output similar to
 ```
+Creating cluster "kind" ...
+ ✓ Ensuring node image (kindest/node:v1.17.0) 🖼�
+ ✓ Preparing nodes 📦 📦
+ ✓ Writing configuration 📜
+ ✓ Starting control-plane 🕹��️️
+ ✓ Installing CNI 🔌
+ ✓ Installing StorageClass 💾
+ ✓ Joining worker nodes 🚜
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind
+
+Have a nice day! 👋
 ```
+
+You may now move on to section 3 to start the tool
 
 
 # 3. Debugging resources
