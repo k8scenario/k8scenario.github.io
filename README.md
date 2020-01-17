@@ -101,7 +101,6 @@ https://k8scenario.github.io/static/bin/k8scenario
 </p>
 
 <br/>
-</details>
 
 ```bash
 wget -O ~/bin/k8scenario https://mjbright.github.io/static/bin/k8scenario
@@ -109,10 +108,51 @@ wget -O ~/bin/k8scenario https://mjbright.github.io/static/bin/k8scenario
 chmod +x ~/bin/k8scenario
 k8scenario --version
 ```
+</details>
 
 You may now move on to section 3 to start the tool
 
-# 2. Debugging resources
+# 2. Creating a KIND Kubernetes cluster
+
+Create a file called '*kind_2.yaml*' with the following content:
+
+```yaml
+kind: Cluster
+apiVersion: kind.sigs.k8s.io/v1alpha3
+nodes:
+        - role: control-plane
+        - role: worker
+```
+
+## 2.1 Deleting an existing cluster:
+
+If you already have a cluster which you wish to replace, first delete that cluster.
+
+Supposing that the cluster is named '*kind*', delete it as follows:
+```bash
+kind delete cluster --name kind
+```
+
+## 2.2 Create the 2-node cluster:
+
+Create the 2-node cluster as shown, and check that the cluster is created.
+
+```bash
+kind create cluster --config kind_2.yaml
+kind get clusters
+```
+
+Verify that you have a 2-node cluster:
+```bash
+kubectl get nodes
+```
+
+You should see output similar to
+```
+```
+
+
+# 3. Debugging resources
 
 <details><summary>show</summary>
 <!-- <p> -->
@@ -127,7 +167,7 @@ Follow <i>@learnk8s</i> on twitter at <a href="https://twitter.com/learnk8s"> ht
 <!-- </p> -->
 </details>
 
-# 3. Using k8scenario
+# 4. Using k8scenario
 
 k8scenario is a command line tool.
 
