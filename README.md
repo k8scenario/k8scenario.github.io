@@ -48,14 +48,20 @@ echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
 The tool can be downloaded using the command:
 
 ```bash
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+wget -O ~/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+chmod +x ~/bin/kubectl
+kubectl version
 ```
 
 **NOTE**: or in case of copy/paste problems do this as 2 separate commands:
 ```bash
 RELEASE=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 
-curl -LO https://storage.googleapis.com/kubernetes-release/release/$RELEASE/bin/linux/amd64/kubectl
+wget -O ~/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$RELEASE/bin/linux/amd64/kubectl
+
+chmod +x ~/bin/kubectl
+kubectl version
 ```
 
 Reference: https://kubernetes.io/docs/tasks/tools/install-kubectl/
@@ -98,7 +104,10 @@ https://k8scenario.github.io/static/bin/k8scenario
 </details>
 
 ```bash
-wget -O bin/k8scenario https://mjbright.github.io/static/bin/k8scenario
+wget -O ~/bin/k8scenario https://mjbright.github.io/static/bin/k8scenario
+
+chmod +x ~/bin/k8scenario
+k8scenario --version
 ```
 
 You may now move on to section 3 to start the tool
