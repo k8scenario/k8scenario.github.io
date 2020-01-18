@@ -189,6 +189,8 @@ kind create cluster --config kind_2.yaml
 kind get clusters
 ```
 
+**Note**: In case of a problem to create the cluster, delete the cluster and try again.
+
 Verify that you have a 2-node cluster:
 ```bash
 kubectl get nodes
