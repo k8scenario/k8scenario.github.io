@@ -357,7 +357,7 @@ Just launch a Pod (and/or a Deployment/ReplicaSet) with a name starting with 'ba
 - pods, namespace
 
  - exit status: 1
-[scenario0] - cluster broken - Sleeping <10> secs ...
+[scenario0]/1 - fix incomplete - Sleeping <10> secs ...
 ```
 
 ### Solve the problem
@@ -399,6 +399,15 @@ Note that to eliminate the need to set the namespace on each command, it is poss
 <pre>
 kubectl config set-context $(kubectl config current-context) --namespace k8scenario
 </pre>
+
+Alternatively, you can install the kubectx/kubens tool to change the namespace of the current context as
+```bash
+kubens k8scenario
+```
+
+You can install the tool from https://github.com/ahmetb/kubectx
+
+**Note:** You can simply git clone that repository and copy the kubens script into your PATH at ~/bin/
 
 <br/>
 <br/>
