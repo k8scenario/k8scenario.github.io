@@ -129,7 +129,9 @@ kind version
 
 </details>
    
-## 1.4 Downloading k8scenario
+## 1.4 Installing the Calico CNI
+
+## 1.5 Downloading k8scenario
 
 <details><summary>show</summary>
 
@@ -161,10 +163,15 @@ Create a file called '*kind_2.yaml*' with the following content:
 ```yaml
 kind: Cluster
 apiVersion: kind.sigs.k8s.io/v1alpha3
+networking:
+    disableDefaultCNI: true
+    podSubnet: 192.168.0.0/16
 nodes:
         - role: control-plane
         - role: worker
 ```
+
+**Note:** We are disabling the default CNI, kindnet.  We will install Calico in a later step.
 
 ## 2.1 Deleting any existing cluster:
 
@@ -188,6 +195,7 @@ Create the 2-node cluster as shown, and check that the cluster is created.
 kind create cluster --config kind_2.yaml
 kind get clusters
 ```
+Calico
 
 **Note**: In case of a problem to create the cluster, delete the cluster and try again.
 
@@ -222,12 +230,68 @@ Verify that you can access the cluster
 You should see output similar to:
 ```
 NAME                 STATUS   ROLES    AGE     VERSION
+kind-control-plane   NotReady master   3m18s   v1.17.0
+kind-worker          NotReady <none>   2m41s   v1.17.0
+```
+
+Note that the nodes are '*NotReady*' because we have not yet installed the Pod network - for this we need to install the Calico CNI networking extension.
+
+# 2.3 Installing the Calico CNI
+
+### Download the Calico manifest
+
+We will install the *latest* 3.11 release
+
+*See*: https://docs.projectcalico.org/v3.11/getting-started/kubernetes/installation/calico
+
+Perform the following steps to install Calico
+
+```bash
+    wget -O calico_v3.11.yaml \
+        https://docs.projectcalico.org/v3.11/manifests/calico.yaml
+
+    kubectl apply -f calico_v3.11.yaml
+
+    kubectl -n kube-system set env daemonset/calico-node FELIX_IGNORELOOSERPF=true
+```
+
+You should now see several calico Pods running in the kube-system namespace.
+
+```bash
+> kubectl get pods -n kube-system | grep calico
+calico-kube-controllers-5b644bc49c-8h6pw     1/1     Running   0          125m
+calico-node-f6j49                            1/1     Running   0          114m
+calico-node-zjxl9                            1/1     Running   0          114m
+```
+
+Once those Pods are all in the Running state, you should see your nodes in the Ready state as shown below.
+
+**Note:** It is possible that we need to restart the Pods if the Nodes do not go to the *Ready* state - we describe this below.
+
+
+After a few seconds, but wait up to a minute, you should see output similar to:
+
+```
+> kubectl get nodes
+NAME                 STATUS   ROLES    AGE     VERSION
 kind-control-plane   Ready    master   3m18s   v1.17.0
 kind-worker          Ready    <none>   2m41s   v1.17.0
 ```
 
 You may now move on to section 3 to start the tool
 
+### If your Nodes don't go to the Ready state (or calico Pods are not Running)
+
+In this case we need to restart the '*calico-node-*' Calico Pods.
+
+You can do this in one command as follows:
+
+```bash
+    kubectl -n kube-system delete $(kubectl get deploy,pods --no-headers -A
+-l k8s-app=calico-node | awk '{ print $2; }'
+```
+
+Check now that your Nodes are all *Ready*.
 
 # 3. Debugging resources
 
