@@ -129,8 +129,6 @@ kind version
 
 </details>
    
-## 1.4 Installing the Calico CNI
-
 ## 1.5 Downloading k8scenario
 
 <details><summary>show</summary>
