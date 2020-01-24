@@ -41,7 +41,33 @@ echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
 . ~/.bashrc
 ```
 
-## 1.1 Verifying Docker
+## 1.1 Installing Docker
+
+```bash
+sudo bash -i
+
+  apt-get update -y
+    apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    apt-key fingerprint 0EBFCD88
+    add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+    apt-get update
+    apt-get install -y docker-ce docker-ce-cli containerd.io
+
+    docker run hello-world
+
+    usermod -aG docker /home/ubuntu
+    docker version
+```
+
+Now logout and login as user ubuntu and verify
+
+```bash
+    docker version
+```
+
+## 1.1.1 Verifying Docker
 
 <details><summary>Verify Docker</summary>
 Verify that Docker runs correctly on your system:
