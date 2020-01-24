@@ -57,7 +57,7 @@ sudo bash -i
 
     docker run hello-world
 
-    usermod -aG docker /home/ubuntu
+    usermod -aG docker ubuntu
     docker version
 ```
 
