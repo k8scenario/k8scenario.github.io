@@ -291,6 +291,31 @@ You can do this in one command as follows:
 
 Check now that your Nodes are all *Ready*.
 
+# 2.4 Allowing Pods to be scheduled to the Master Node
+
+By default Kubernetes installers configure Master nodes to disallow user (non-system) Pods.
+
+Verify that this is the case for the *Master* node (kind-control-plane) but not for the *Worker* node (kind-worker):
+
+```bash
+  > kubectl describe node kind-control-plane | grep -i taint
+  Taints:             node-role.kubernetes.io/master:NoSchedule
+
+  > kubectl describe node kind-worker | grep -i taint
+  Taints:             <none>
+```
+
+We will remove the taint on the *Master* to allow us to schedule Pods across all nodes
+**Note**: This should not be done on production clusters
+
+```bash
+  > kubectl taint node kind-control-plane node-role.kubernetes.io/master-
+  node/kind-control-plane untainted
+
+  > kubectl describe node kind-control-plane | grep -i taint
+  Taints:             <none>
+```
+
 # 3. Debugging resources
 
 <details><summary>show</summary>
